@@ -21,7 +21,7 @@
         <td><%= asset.asset_type.name %></td>
         <td><%= asset.asset_value %></td>
         <td><%= asset.user_id %></td>
-        <td><%= asset.net_worth_id %></td>
+        <td><%= asset.net_worth.liabilities_id %></td>
         <td>
           <a href="/assets/<%= asset.id %>" class="btn btn-primary">Show</a>
           <a href="/assets/<%= asset.id %>/edit" class="btn btn-warning">Edit</a>
