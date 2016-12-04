@@ -20,7 +20,7 @@
       <tr>
         <td><%= liability.liabilities_type.name %></td>
         <td><%= liability.liabilities_value %></td>
-        <td><%= liability.net_worth_id %></td>
+        <td><%= liability.net_worth.liabilities_id %></td>
         <td><%= liability.user_id %></td>
         <td>
           <a href="/liabilities/<%= liability.id %>" class="btn btn-primary">Show</a>
