@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   root :to => "net_worths#index"
   # Routes for the Liability_type resource:
   # CREATE
