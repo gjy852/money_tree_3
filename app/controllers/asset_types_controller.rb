@@ -1,6 +1,6 @@
 class AssetTypesController < ApplicationController
   def index
-    @asset_types = AssetType.all
+    @asset_types = AssetType.page(params[:page]).per(10)
 
     render("asset_types/index.html.erb")
   end

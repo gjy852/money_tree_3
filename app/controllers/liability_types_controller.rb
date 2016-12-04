@@ -1,6 +1,6 @@
 class LiabilityTypesController < ApplicationController
   def index
-    @liability_types = LiabilityType.all
+    @liability_types = LiabilityType.page(params[:page]).per(10)
 
     render("liability_types/index.html.erb")
   end
