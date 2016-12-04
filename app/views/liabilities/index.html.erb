@@ -18,7 +18,7 @@
 
       <% @liabilities.each do |liability| %>
       <tr>
-        <td><%= liability.liabilities_type_id %></td>
+        <td><%= liability.liabilities_type.name %></td>
         <td><%= liability.liabilities_value %></td>
         <td><%= liability.net_worth_id %></td>
         <td><%= liability.user_id %></td>
