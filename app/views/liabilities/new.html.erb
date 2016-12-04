@@ -42,7 +42,7 @@
           Net worth
         </label>
 
-        <input type="text" id="net_worth_id" name="net_worth_id" placeholder="Net worth" class="form-control" value="<%= @liability.net_worth_id %>">
+        <%= select_tag(:net_worth_id, options_from_collection_for_select(NetWorth.all, :id, :liabilities_id, @liability.net_worth_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for user_id -->
