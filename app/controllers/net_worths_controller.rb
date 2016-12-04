@@ -6,6 +6,8 @@ class NetWorthsController < ApplicationController
   end
 
   def show
+    @asset = Asset.new
+    @liability = Liability.new
     @net_worth = NetWorth.find(params[:id])
 
     render("net_worths/show.html.erb")

@@ -48,6 +48,47 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_net_worth" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for liabilities_id -->
+      <div class="form-group">
+        <label for="liabilities_id" class="control-label">
+          Liabilities
+        </label>
+
+        <input type="text" id="liabilities_id" name="liabilities_id" placeholder="Liabilities" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for net_worth_total_id -->
+      <div class="form-group">
+        <label for="net_worth_total_id" class="control-label">
+          Net worth total
+        </label>
+
+        <input type="text" id="net_worth_total_id" name="net_worth_total_id" placeholder="Net worth total" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for asset_total_id -->
+      <div class="form-group">
+        <label for="asset_total_id" class="control-label">
+          Asset total
+        </label>
+
+        <input type="text" id="asset_total_id" name="asset_total_id" placeholder="Asset total" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= @user.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Net Worth
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>

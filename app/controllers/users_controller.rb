@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @net_worth = NetWorth.new
     @user = User.find(params[:id])
 
     render("users/show.html.erb")
