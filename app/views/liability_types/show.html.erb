@@ -1,0 +1,25 @@
+<div class="page-header">
+  <h3>Liability Type #<%= @liability_type.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @liability_type.name %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/liability_types" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/liability_types/<%= @liability_type.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_liability_type/<%= @liability_type.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
