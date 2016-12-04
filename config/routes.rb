@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Liability resource:
+  # CREATE
+  get "/liabilities/new", :controller => "liabilities", :action => "new"
+  post "/create_liability", :controller => "liabilities", :action => "create"
+
+  # READ
+  get "/liabilities", :controller => "liabilities", :action => "index"
+  get "/liabilities/:id", :controller => "liabilities", :action => "show"
+
+  # UPDATE
+  get "/liabilities/:id/edit", :controller => "liabilities", :action => "edit"
+  post "/update_liability/:id", :controller => "liabilities", :action => "update"
+
+  # DELETE
+  get "/delete_liability/:id", :controller => "liabilities", :action => "destroy"
+  #------------------------------
+
   # Routes for the Asset resource:
   # CREATE
   get "/assets/new", :controller => "assets", :action => "new"
