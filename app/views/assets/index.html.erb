@@ -18,7 +18,7 @@
 
       <% @assets.each do |asset| %>
       <tr>
-        <td><%= asset.asset_type_id %></td>
+        <td><%= asset.asset_type.name %></td>
         <td><%= asset.asset_value %></td>
         <td><%= asset.user_id %></td>
         <td><%= asset.net_worth_id %></td>
