@@ -1,6 +1,7 @@
 class LiabilityTypesController < ApplicationController
   def index
-    @liability_types = LiabilityType.page(params[:page]).per(10)
+    @q = LiabilityType.ransack(params[:q])
+    @liability_types = @q.result(:distinct => true).includes(:liability).page(params[:page]).per(10)
 
     render("liability_types/index.html.erb")
   end

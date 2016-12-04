@@ -1,6 +1,7 @@
 class AssetTypesController < ApplicationController
   def index
-    @asset_types = AssetType.page(params[:page]).per(10)
+    @q = AssetType.ransack(params[:q])
+    @asset_types = @q.result(:distinct => true).includes(:asset).page(params[:page]).per(10)
 
     render("asset_types/index.html.erb")
   end
