@@ -24,7 +24,7 @@
           Liabilities type
         </label>
 
-        <input type="text" id="liabilities_type_id" name="liabilities_type_id" placeholder="Liabilities type" class="form-control" value="<%= @liability.liabilities_type_id %>">
+        <%= select_tag(:liabilities_type_id, options_from_collection_for_select(LiabilityType.all, :id, :name, @liability.liabilities_type_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for liabilities_value -->
