@@ -15,7 +15,13 @@
       <dd><%= @net_worth.asset_total_id %></dd>
 
       <dt>User</dt>
-      <dd><%= @net_worth.user_id %></dd>
+      <dd>
+        <% if @net_worth.user.present? %>
+          <a href="/users/<%= @net_worth.user_id %>">
+            <%= @net_worth.user.created_at %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

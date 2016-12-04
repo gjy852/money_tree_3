@@ -18,10 +18,22 @@
 
       <% @assets.each do |asset| %>
       <tr>
-        <td><%= asset.asset_type.name %></td>
+        <td>
+          <% if asset.asset_type.present? %>
+            <a href="/asset_types/<%= asset.asset_type.id %>">
+              <%= asset.asset_type.name %>
+            </a>
+          <% end %>
+        </td>
         <td><%= asset.asset_value %></td>
         <td><%= asset.user_id %></td>
-        <td><%= asset.net_worth.liabilities_id %></td>
+        <td>
+          <% if asset.net_worth.present? %>
+            <a href="/net_worths/<%= asset.net_worth.id %>">
+              <%= asset.net_worth.liabilities_id %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/assets/<%= asset.id %>" class="btn btn-primary">Show</a>
           <a href="/assets/<%= asset.id %>/edit" class="btn btn-warning">Edit</a>

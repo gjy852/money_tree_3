@@ -21,7 +21,13 @@
         <td><%= net_worth.liabilities_id %></td>
         <td><%= net_worth.net_worth_total_id %></td>
         <td><%= net_worth.asset_total_id %></td>
-        <td><%= net_worth.user.created_at %></td>
+        <td>
+          <% if net_worth.user.present? %>
+            <a href="/users/<%= net_worth.user.id %>">
+              <%= net_worth.user.created_at %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/net_worths/<%= net_worth.id %>" class="btn btn-primary">Show</a>
           <a href="/net_worths/<%= net_worth.id %>/edit" class="btn btn-warning">Edit</a>

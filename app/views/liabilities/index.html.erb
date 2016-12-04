@@ -18,9 +18,21 @@
 
       <% @liabilities.each do |liability| %>
       <tr>
-        <td><%= liability.liabilities_type.name %></td>
+        <td>
+          <% if liability.liabilities_type.present? %>
+            <a href="/liability_types/<%= liability.liabilities_type.id %>">
+              <%= liability.liabilities_type.name %>
+            </a>
+          <% end %>
+        </td>
         <td><%= liability.liabilities_value %></td>
-        <td><%= liability.net_worth.liabilities_id %></td>
+        <td>
+          <% if liability.net_worth.present? %>
+            <a href="/net_worths/<%= liability.net_worth.id %>">
+              <%= liability.net_worth.liabilities_id %>
+            </a>
+          <% end %>
+        </td>
         <td><%= liability.user_id %></td>
         <td>
           <a href="/liabilities/<%= liability.id %>" class="btn btn-primary">Show</a>

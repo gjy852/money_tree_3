@@ -6,13 +6,25 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Liabilities type</dt>
-      <dd><%= @liability.liabilities_type_id %></dd>
+      <dd>
+        <% if @liability.liabilities_type.present? %>
+          <a href="/liability_types/<%= @liability.liabilities_type_id %>">
+            <%= @liability.liabilities_type.name %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Liabilities value</dt>
       <dd><%= @liability.liabilities_value %></dd>
 
       <dt>Net worth</dt>
-      <dd><%= @liability.net_worth_id %></dd>
+      <dd>
+        <% if @liability.net_worth.present? %>
+          <a href="/net_worths/<%= @liability.net_worth_id %>">
+            <%= @liability.net_worth.liabilities_id %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>User</dt>
       <dd><%= @liability.user_id %></dd>

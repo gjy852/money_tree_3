@@ -6,7 +6,13 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Asset type</dt>
-      <dd><%= @asset.asset_type_id %></dd>
+      <dd>
+        <% if @asset.asset_type.present? %>
+          <a href="/asset_types/<%= @asset.asset_type_id %>">
+            <%= @asset.asset_type.name %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Asset value</dt>
       <dd><%= @asset.asset_value %></dd>
@@ -15,7 +21,13 @@
       <dd><%= @asset.user_id %></dd>
 
       <dt>Net worth</dt>
-      <dd><%= @asset.net_worth_id %></dd>
+      <dd>
+        <% if @asset.net_worth.present? %>
+          <a href="/net_worths/<%= @asset.net_worth_id %>">
+            <%= @asset.net_worth.liabilities_id %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 
