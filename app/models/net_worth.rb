@@ -1,6 +1,8 @@
 class NetWorth < ApplicationRecord
   # Direct associations
 
+  belongs_to :user
+
   has_many   :assets,
              :dependent => :destroy
 
