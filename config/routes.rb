@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "net_worths#index"
   # Routes for the Liability_type resource:
   # CREATE
   get "/liability_types/new", :controller => "liability_types", :action => "new"
