@@ -1,0 +1,25 @@
+<div class="page-header">
+  <h3>Asset Type #<%= @asset_type.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @asset_type.name %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/asset_types" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/asset_types/<%= @asset_type.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_asset_type/<%= @asset_type.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
