@@ -1,5 +1,7 @@
 ActiveAdmin.register Asset do
 
+ permit_params :asset_type_id, :asset_value, :user_id, :net_worth_id
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
