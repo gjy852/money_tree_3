@@ -123,7 +123,7 @@
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Assets
+        Assets Total: $<%= @calculate_asset_total %>
       </li>
 
       <% @net_worth.assets.each do |asset| %>
@@ -131,6 +131,8 @@
           <a href="/assets/<%= asset.id %>">
             <%= asset.asset_type_id %>
           </a>
+          <%= asset.asset_type.name %>
+          $<%= asset.asset_value %>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/assets/<%= asset.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
@@ -174,7 +176,7 @@
           User
         </label>
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="">
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
       </div>
 
       <!-- Label and input for net_worth_id -->
@@ -183,7 +185,7 @@
           Net worth
         </label>
 
-        <%= select_tag(:net_worth_id, options_from_collection_for_select(NetWorth.all, :id, :liabilities_id), :class => "form-control") %>
+        <%= select_tag(:net_worth_id, options_from_collection_for_select(NetWorth.all, :id, :user_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-block btn-success">

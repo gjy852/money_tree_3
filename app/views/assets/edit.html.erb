@@ -51,7 +51,7 @@
           Net worth
         </label>
 
-        <%= select_tag(:net_worth_id, options_from_collection_for_select(NetWorth.all, :id, :liabilities_id, @asset.net_worth_id), :class => "form-control") %>
+        <%= select_tag(:net_worth_id, options_from_collection_for_select(NetWorth.all, :id, :user_id, @asset.net_worth_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">

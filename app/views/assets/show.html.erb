@@ -24,7 +24,7 @@
       <dd>
         <% if @asset.net_worth.present? %>
           <a href="/net_worths/<%= @asset.net_worth_id %>">
-            <%= @asset.net_worth.liabilities_id %>
+            <%= @asset.net_worth.user_id %>
           </a>
         <% end %>
       </dd>

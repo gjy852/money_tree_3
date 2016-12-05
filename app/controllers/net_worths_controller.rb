@@ -1,7 +1,13 @@
 class NetWorthsController < ApplicationController
+ # def calculate_asset_total
+ #   i = NetWorth.find(1).assets
+ #   @numbers = i.each {|x| p x.asset_value.to_f}
+ # end
+
   def index
     @q = NetWorth.ransack(params[:q])
     @net_worths = @q.result(:distinct => true).includes(:liabilities, :assets, :user).page(params[:page]).per(10)
+    @calculate_asset_total = Asset.sum(:asset_value)
 
     render("net_worths/index.html.erb")
   end
@@ -10,6 +16,7 @@ class NetWorthsController < ApplicationController
     @asset = Asset.new
     @liability = Liability.new
     @net_worth = NetWorth.find(params[:id])
+    @calculate_asset_total = Asset.sum(:asset_value)
 
     render("net_worths/show.html.erb")
   end
