@@ -17,6 +17,7 @@ class NetWorthsController < ApplicationController
     @liability = Liability.new
     @net_worth = NetWorth.find(params[:id])
     @calculate_asset_total = Asset.sum(:asset_value)
+    @calculate_liability_total = Liability.sum(:liabilities_value)
 
     render("net_worths/show.html.erb")
   end

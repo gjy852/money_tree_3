@@ -9,18 +9,18 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Liabilities</th>
         <th>Net worth total</th>
         <th>Asset total</th>
+        <th>Liabilities</th>
         <th>User</th>
         <th>Actions</th>
       </tr>
 
       <% @net_worths.each do |net_worth| %>
       <tr>
-        <td><%= net_worth.liabilities_id %></td>
         <td><%= net_worth.net_worth_total_id %></td>
         <td>$<%= @calculate_asset_total %></td>
+        <td><%= net_worth.liabilities_id %></td>
         <td>
           <% if net_worth.user.present? %>
             <a href="/users/<%= net_worth.user.id %>">
