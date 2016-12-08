@@ -8,6 +8,8 @@ class NetWorthsController < ApplicationController
     @q = NetWorth.ransack(params[:q])
     @net_worths = @q.result(:distinct => true).includes(:liabilities, :assets, :user).page(params[:page]).per(10)
     @calculate_asset_total = Asset.sum(:asset_value)
+    @calculate_liability_total = Liability.sum(:liabilities_value)
+    @calculate_net_worth = @calculate_asset_total.to_i + @calculate_liability_total.to_i
 
     render("net_worths/index.html.erb")
   end

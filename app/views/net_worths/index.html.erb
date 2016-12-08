@@ -18,9 +18,9 @@
 
       <% @net_worths.each do |net_worth| %>
       <tr>
-        <td><%= net_worth.net_worth_total_id %></td>
+        <td>$<%= @calculate_net_worth %></td>
         <td>$<%= @calculate_asset_total %></td>
-        <td><%= net_worth.liabilities_id %></td>
+        <td>$<%= @calculate_liability_total %></td>
         <td>
           <% if net_worth.user.present? %>
             <a href="/users/<%= net_worth.user.id %>">
