@@ -18,41 +18,29 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+      <h3> <%= current_user.username %>, would you like to create a net worth? </h3>
+
       <!-- Label and input for liabilities_id -->
       <div class="form-group">
-        <label for="liabilities_id" class="control-label">
-          Liabilities
-        </label>
-
-        <input type="text" id="liabilities_id" name="liabilities_id" placeholder="Liabilities" class="form-control" value="<%= @net_worth.liabilities_id %>">
+        <input type="hidden" id="liabilities_id" name="liabilities_id" placeholder="Liabilities" class="form-control" value="<%= @net_worth.liabilities_id %>">
       </div>
 
       <!-- Label and input for net_worth_total_id -->
       <div class="form-group">
-        <label for="net_worth_total_id" class="control-label">
-          Net worth total
-        </label>
-
-        <input type="text" id="net_worth_total_id" name="net_worth_total_id" placeholder="Net worth total" class="form-control" value="<%= @net_worth.net_worth_total_id %>">
+        <input type="hidden" id="net_worth_total_id" name="net_worth_total_id" placeholder="Net worth total" class="form-control" value="<%= @net_worth.net_worth_total_id %>">
       </div>
 
       <!-- Label and input for asset_total_id -->
       <div class="form-group">
-        <label for="asset_total_id" class="control-label">
-          Asset total
-        </label>
-
-        <input type="text" id="asset_total_id" name="asset_total_id" placeholder="Asset total" class="form-control" value="<%= @net_worth.asset_total_id %>">
+        <input type="hidden" id="asset_total_id" name="asset_total_id" placeholder="Asset total" class="form-control" value="<%= @net_worth.asset_total_id %>">
       </div>
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :created_at, @net_worth.user_id), :class => "form-control") %>
+          <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
       </div>
+        <!-- <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :username, @net_worth.user_id), :class => "form-control") %>
+      </div> -->
 
       <button class="btn btn-success">
         Create Net Worth

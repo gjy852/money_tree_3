@@ -4,6 +4,12 @@
   </h1>
 </div>
 
+
+<% if @user_number_net_worth == 0 %>
+<h3> Welcome, create your first net worth: </h3>
+  <a href="/net_worths/new" button type="button" class="btn btn-default btn-lg btn-success">Create Net Worth </button> </a>
+<% else %>
+
 <!-- <div class="row">
   <div class="col-md-12">
     <table class="table table-striped table-hover">
@@ -62,9 +68,11 @@
           <div class="col-sm-12">
             <h1><p class="text-center">My Net Worth:</p>
               <p class="text-center">$<%= @calculate_net_worth %></p></h1>
-              <p>
-                <a href="/net_worths/1" button type="button" class="btn btn-primary btn-lg btn-block">Go to My Net Worth</button><a>
+                <p>
+                <a href="/net_worths/2" button type="button" class="btn btn-primary btn-lg btn-block">Go to My Net Worth</button><a>
 
             </div>
           </div>
         </div>
+
+        <% end %>

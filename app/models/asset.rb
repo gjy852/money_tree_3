@@ -5,6 +5,8 @@ class Asset < ApplicationRecord
 
   belongs_to :net_worth
 
+  belongs_to :user_id
+
   # Indirect associations
 
   # Validations

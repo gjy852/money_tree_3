@@ -2,7 +2,7 @@ class AssetsController < ApplicationController
   def index
     @q = Asset.ransack(params[:q])
     @assets = @q.result(:distinct => true).includes(:net_worth, :asset_type).page(params[:page]).per(10)
-    
+
     render("assets/index.html.erb")
   end
 
@@ -23,7 +23,7 @@ class AssetsController < ApplicationController
 
     @asset.asset_type_id = params[:asset_type_id]
     @asset.asset_value = params[:asset_value]
-    @asset.user_id = params[:user_id]
+  
     @asset.net_worth_id = params[:net_worth_id]
 
     save_status = @asset.save

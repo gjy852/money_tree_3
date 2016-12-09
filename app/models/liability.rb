@@ -9,6 +9,8 @@ class Liability < ApplicationRecord
   # Indirect associations
 
   # Validations
+  #user_id: presence
+    validates :user_id, :presence => true
   #liabilities_type: presence
     validates :liabilities_type, :presence => true
   #liablities_value: only numbers

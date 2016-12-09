@@ -7,6 +7,9 @@ class NetWorthsController < ApplicationController
   def index
     @q = NetWorth.ransack(params[:q])
     @net_worths = @q.result(:distinct => true).includes(:liabilities, :assets, :user).page(params[:page]).per(10)
+    @user_net_worth = User.find(current_user.id).net_worths
+    @user_number_net_worth = @user_net_worth.count
+    @first_net_worth = @user_net_worth.select(1)
     @calculate_asset_total = Asset.sum(:asset_value)
     @calculate_liability_total = Liability.sum(:liabilities_value)
     @calculate_net_worth = @calculate_asset_total.to_i - @calculate_liability_total.to_i

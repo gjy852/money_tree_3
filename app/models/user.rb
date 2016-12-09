@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_many   :net_worths,
              :dependent => :destroy
+  has_many   :assets, :through => :net_worth
+  has_many   :liabilities, :through => :net_worth
 
   # Indirect associations
 
