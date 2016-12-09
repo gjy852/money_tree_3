@@ -1,200 +1,202 @@
-<div class="page-header">
-  <h3>Net Worth #<%= @net_worth.id %></h3>
-</div>
-
 <div class="row">
   <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
-      <dt>Liabilities</dt>
-      <dd><%= @net_worth.liabilities_id %></dd>
-
-      <dt>Net worth total</dt>
-      <dd><%= @net_worth.net_worth_total_id %></dd>
-
-      <dt>Asset total</dt>
-      <dd><%= @net_worth.asset_total_id %></dd>
-
-      <dt>User</dt>
       <dd>
         <% if @net_worth.user.present? %>
+        <h1> Welcome,
         <a href="/users/<%= @net_worth.user_id %>">
-          <%= @net_worth.user.created_at %>
+          <%= current_user.email %>!</h1>
         </a>
         <% end %>
       </dd>
-
     </dl>
+  </div>
+</div>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/net_worths" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/net_worths/<%= @net_worth.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_net_worth/<%= @net_worth.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+<hr>
+
+<!-- Summary -->
+<div class="row mt-2 mb-1">
+  <div class="col-md-4">
+    <div class="col-sm-12">
+      <h1><p class="text-center">My Asset Total:</p>
+        <p class="text-center">$<%= @calculate_asset_total %></p></h1>
+      </div>
     </div>
-  </div>
-</div>
-
-<!-- A Net worth has many liabilities -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Liabilities Total: $<%= @calculate_liability_total %>
-      </li>
-
-      <% @net_worth.liabilities.each do |liability| %>
-      <li class="list-group-item">
-        <a href="/liabilities/<%= liability.id %>">
-          <%= liability.liabilities_type_id %>
-        </a>
-        <%= liability.liabilities_type.name %>
-        $<%= liability.liabilities_value %>
-        <div class="btn-group btn-group-xs pull-right">
-          <a href="/liabilities/<%= liability.id %>" class="btn btn-primary">
-            <i class="fa fa-search-plus"></i>
-          </a>
-          <a href="/liabilities/<%= liability.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-          <a href="/delete_liability/<%= liability.id %>" class="btn btn-danger" rel="nofollow">
-            <i class="fa fa-trash-o"></i>
-          </a>
+    <div class="col-md-4">
+      <div class="col-sm-12">
+        <h1><p class="text-center">My Liability Total:</p>
+          <p class="text-center">$<%= @calculate_liability_total %></p></h1>
         </div>
-      </li>
-      <% end %>
-
-      <li class="list-group-item">
-        <form action="/create_liability" method="post">
-          <!-- Hidden input for authenticity token to protect from forgery -->
-          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-          <!-- Label and input for liabilities_type_id -->
-          <div class="form-group">
-            <label for="liabilities_type_id" class="control-label">
-              Liabilities type
-            </label>
-
-            <%= select_tag(:liabilities_type_id, options_from_collection_for_select(LiabilityType.all, :id, :name), :class => "form-control") %>
+      </div>
+        <div class="col-md-4">
+          <div class="col-sm-12">
+            <h1><p class="text-center">My Net Worth:</p>
+              <p class="text-center">$<%= @calculate_net_worth %></p></h1>
+            </div>
           </div>
-
-          <!-- Label and input for liabilities_value -->
-          <div class="form-group">
-            <label for="liabilities_value" class="control-label">
-              Liabilities value
-            </label>
-
-            <input type="text" id="liabilities_value" name="liabilities_value" placeholder="Liabilities value" class="form-control" value="">
-          </div>
-
-          <!-- Label and input for user_id -->
-          <div class="form-group">
-            <label for="user_id" class="control-label">
-              User
-            </label>
-
-            <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
-          </div>
-
-          <!-- Label and input for net_worth_id -->
-          <div class="form-group">
-            <label for="net_worth_id" class="control-label">
-              Net worth
-            </label>
-
-            <%= select_tag(:net_worth_id, options_from_collection_for_select(NetWorth.all, :id, :liabilities_id), :class => "form-control") %>
-          </div>
-
-          <button class="btn btn-block btn-success">
-            Create Liability
-          </button>
-        </form>
-      </li>
-    </ul>
-  </div>
-</div>
+        </div>
 
 <!-- A Net worth has many assets -->
 
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Assets Total: $<%= @calculate_asset_total %>
-      </li>
+<div class="row mt-2 mb-1">
+  <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-info">
+            Assets Total: $<%= @calculate_asset_total %>
+          </li>
 
-      <% @net_worth.assets.each do |asset| %>
-      <li class="list-group-item">
-        <a href="/assets/<%= asset.id %>">
-          <%= asset.asset_type_id %>
-        </a>
-        <%= asset.asset_type.name %>
-        $<%= asset.asset_value %>
-        <div class="btn-group btn-group-xs pull-right">
-          <a href="/assets/<%= asset.id %>" class="btn btn-primary">
-            <i class="fa fa-search-plus"></i>
-          </a>
-          <a href="/assets/<%= asset.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-          <a href="/delete_asset/<%= asset.id %>" class="btn btn-danger" rel="nofollow">
-            <i class="fa fa-trash-o"></i>
-          </a>
-        </div>
-      </li>
-      <% end %>
+          <% @net_worth.assets.each do |asset| %>
+          <li class="list-group-item">
+            <a href="/assets/<%= asset.id %>">
+            <%= asset.asset_type.name %>
+            $<%= asset.asset_value %>
+              </a>
+            <div class="btn-group btn-group-xs pull-right">
 
-      <li class="list-group-item">
-        <form action="/create_asset" method="post">
-          <!-- Hidden input for authenticity token to protect from forgery -->
-          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+              <a href="/assets/<%= asset.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_asset/<%= asset.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </div>
+          </li>
+          <% end %>
 
-          <!-- Label and input for asset_type_id -->
-          <div class="form-group">
-            <label for="asset_type_id" class="control-label">
-              Asset type
-            </label>
+          <li class="list-group-item">
+            <form action="/create_asset" method="post">
+              <!-- Hidden input for authenticity token to protect from forgery -->
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-            <%= select_tag(:asset_type_id, options_from_collection_for_select(AssetType.all, :id, :name), :class => "form-control") %>
-          </div>
 
-          <!-- Label and input for asset_value -->
-          <div class="form-group">
-            <label for="asset_value" class="control-label">
-              Asset value
-            </label>
+              <!-- Label and input for asset_type_id -->
+              <div class="form-group">
+                <label for="asset_type_id" class="control-label">
+                  Asset type
+                </label>
 
-            <input type="text" id="asset_value" name="asset_value" placeholder="Asset value" class="form-control" value="">
-          </div>
+                <%= select_tag(:asset_type_id, options_from_collection_for_select(AssetType.all, :id, :name), :class => "form-control") %>
+              </div>
 
-          <!-- Label and input for user_id -->
-          <div class="form-group">
-            <label for="user_id" class="control-label">
-              User
-            </label>
+              <!-- Label and input for asset_value -->
+              <div class="form-group">
+                <label for="asset_value" class="control-label">
+                  Asset value
+                </label>
 
-            <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
-          </div>
+                <input type="text" id="asset_value" name="asset_value" placeholder="Asset value" class="form-control" value="">
+              </div>
 
-          <!-- Label and input for net_worth_id -->
-          <div class="form-group">
-            <label for="net_worth_id" class="control-label">
-              Net worth
-            </label>
+              <!-- Label and input for user_id -->
+              <div class="form-group">
+                <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+              </div>
 
-            <%= select_tag(:net_worth_id, options_from_collection_for_select(NetWorth.all, :id, :user_id), :class => "form-control") %>
-          </div>
+              <!-- Label and input for net_worth_id -->
+              <div class="form-group">
+                <label for="net_worth_id" class="control-label">
+                  Net worth
+                </label>
 
-          <button class="btn btn-block btn-success">
-            Create Asset
-          </button>
-        </form>
-      </li>
-    </ul>
+              <%= select_tag(:net_worth_id, options_from_collection_for_select(NetWorth.all, :id, :user_id), :class => "form-control") %>
+              </div>
+
+              <button class="btn btn-block btn-success">
+                Create Asset
+              </button>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-</div>
+
+
+  <!-- A Net worth has many liabilities -->
+  <div class="row mt-2 mb-1">
+    <div class="col-md-4">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+              Liabilities Total: $<%= @calculate_liability_total %>
+            </li>
+
+            <% @net_worth.liabilities.each do |liability| %>
+            <li class="list-group-item">
+              <a href="/liabilities/<%= liability.id %>">
+              <%= liability.liabilities_type.name %>
+              $<%= liability.liabilities_value %>
+                </a>
+              <div class="btn-group btn-group-xs pull-right">
+                </a>
+                <a href="/liabilities/<%= liability.id %>/edit" class="btn btn-warning">
+                  <i class="fa fa-edit"></i>
+                </a>
+                <a href="/delete_liability/<%= liability.id %>" class="btn btn-danger" rel="nofollow">
+                  <i class="fa fa-trash-o"></i>
+                </a>
+              </div>
+            </li>
+            <% end %>
+
+            <li class="list-group-item">
+              <form action="/create_liability" method="post">
+                <!-- Hidden input for authenticity token to protect from forgery -->
+                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+                <!-- Label and input for liabilities_type_id -->
+                <div class="form-group">
+                  <label for="liabilities_type_id" class="control-label">
+                    Liabilities type
+                  </label>
+
+                  <%= select_tag(:liabilities_type_id, options_from_collection_for_select(LiabilityType.all, :id, :name), :class => "form-control") %>
+                </div>
+
+                <!-- Label and input for liabilities_value -->
+                <div class="form-group">
+                  <label for="liabilities_value" class="control-label">
+                    Liabilities value
+                  </label>
+
+                  <input type="text" id="liabilities_value" name="liabilities_value" placeholder="Liabilities value" class="form-control" value="">
+                </div>
+
+                <!-- Label and input for user_id -->
+                <div class="form-group">
+                  <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+                </div>
+
+                <!-- Label and input for net_worth_id -->
+                <div class="form-group">
+                  <label for="net_worth_id" class="control-label">
+                    Net worth
+                  </label>
+
+                  <%= select_tag(:net_worth_id, options_from_collection_for_select(NetWorth.all, :id, :liabilities_id), :class => "form-control") %>
+                </div>
+
+                <button class="btn btn-block btn-success">
+                  Create Liability
+                </button>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Net worth total -->
+    <div class="row mt-2 mb-1">
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1><p class="text-center">Net Worth Total:</p>
+              <p class="text-center">$<%= @calculate_net_worth %></p></h1>
+            </div>
+          </div>
+        </div>
+      </div>
