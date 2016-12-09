@@ -11,6 +11,6 @@ class User < ApplicationRecord
   # Indirect associations
 
   # Validations
-  validates :username, :presence => true, :uniqueness => true
+  validates :email, :uniqueness => true
 
 end
