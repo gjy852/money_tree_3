@@ -7,5 +7,5 @@ class AssetType < ApplicationRecord
   # Indirect associations
 
   # Validations
-
+# No Validations 
 end

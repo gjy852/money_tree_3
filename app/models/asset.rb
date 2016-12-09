@@ -8,5 +8,8 @@ class Asset < ApplicationRecord
   # Indirect associations
 
   # Validations
-
+  #asset_type
+  validates :asset_type, :presence=> true
+  #asset_value: only numbers
+  validates :asset_value, :numericality => true
 end

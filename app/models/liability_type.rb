@@ -8,5 +8,5 @@ class LiabilityType < ApplicationRecord
   # Indirect associations
 
   # Validations
-
+ #No validations
 end

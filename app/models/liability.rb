@@ -9,5 +9,10 @@ class Liability < ApplicationRecord
   # Indirect associations
 
   # Validations
-
+  #liabilities_type: presence
+    validates :liabilities_type, :presence => true
+  #liablities_value: only numbers
+    validates :liabilities_value, :numericality => true
+  #net_worth_id: presence
+    validates :net_worth_id, :presence => true
 end
