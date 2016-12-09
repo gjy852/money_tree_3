@@ -15,6 +15,8 @@ class NetWorthsController < ApplicationController
   end
 
   def show
+    @q = NetWorth.ransack(params[:q])
+    @user = User.find(current_user.id)
     @asset = Asset.new
     @liability = Liability.new
     @net_worth = NetWorth.find(params[:id])

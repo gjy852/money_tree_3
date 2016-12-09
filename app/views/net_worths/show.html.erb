@@ -2,9 +2,9 @@
   <div class="col-md-12 mb-2">
       <dd>
         <% if @net_worth.user.present? %>
-        <h1> Welcome,
-        <a href="/users/<%= @net_worth.user_id %>">
-          <%= current_user.email %>!</h1>
+        <h2> Welcome,
+          <%= current_user.username %></a>. Your total net worth is: $<%= @calculate_net_worth %>. </h2>
+
         </a>
         <% end %>
       </dd>
@@ -14,37 +14,32 @@
 
 <hr>
 
+
 <!-- Summary -->
 <div class="row mt-2 mb-1">
-  <div class="col-md-4">
+  <div class="col-md-6">
     <div class="col-sm-12">
       <h1><p class="text-center">My Asset Total:</p>
         <p class="text-center">$<%= @calculate_asset_total %></p></h1>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
       <div class="col-sm-12">
         <h1><p class="text-center">My Liability Total:</p>
           <p class="text-center">$<%= @calculate_liability_total %></p></h1>
         </div>
       </div>
-        <div class="col-md-4">
-          <div class="col-sm-12">
-            <h1><p class="text-center">My Net Worth:</p>
-              <p class="text-center">$<%= @calculate_net_worth %></p></h1>
-            </div>
-          </div>
-        </div>
+    </div>
 
 <!-- A Net worth has many assets -->
 
 <div class="row mt-2 mb-1">
-  <div class="col-md-4">
+  <div class="col-md-6">
     <div class="row">
       <div class="col-md-12">
         <ul class="list-group">
           <li class="list-group-item list-group-item-info">
-            Assets Total: $<%= @calculate_asset_total %>
+          Asset Summary
           </li>
 
           <% @net_worth.assets.each do |asset| %>
@@ -116,12 +111,12 @@
 
   <!-- A Net worth has many liabilities -->
   <div class="row mt-2 mb-1">
-    <div class="col-md-4">
+    <div class="col-md-6">
       <div class="row">
         <div class="col-md-12">
           <ul class="list-group">
             <li class="list-group-item list-group-item-info">
-              Liabilities Total: $<%= @calculate_liability_total %>
+              Liabilities Summary
             </li>
 
             <% @net_worth.liabilities.each do |liability| %>
@@ -188,15 +183,3 @@
         </div>
       </div>
     </div>
-
-    <!-- Net worth total -->
-    <div class="row mt-2 mb-1">
-      <div class="col-md-4">
-        <div class="row">
-          <div class="col-sm-12">
-            <h1><p class="text-center">Net Worth Total:</p>
-              <p class="text-center">$<%= @calculate_net_worth %></p></h1>
-            </div>
-          </div>
-        </div>
-      </div>
