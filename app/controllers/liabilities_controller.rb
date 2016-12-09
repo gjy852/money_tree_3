@@ -2,6 +2,7 @@ class LiabilitiesController < ApplicationController
   def index
     @q = Liability.ransack(params[:q])
     @liabilities = @q.result(:distinct => true).includes(:net_worth, :liabilities_type).page(params[:page]).per(10)
+    @calculate_liability_total = Liability.sum(:liabilities_value)
 
     render("liabilities/index.html.erb")
   end
@@ -63,7 +64,7 @@ class LiabilitiesController < ApplicationController
 
       case referer
       when "/liabilities/#{@liability.id}/edit", "/update_liability"
-        redirect_to("/liabilities/#{@liability.id}", :notice => "Liability updated successfully.")
+        redirect_to("/liabilities/", :notice => "Liability updated successfully.")
       else
         redirect_back(:fallback_location => "/", :notice => "Liability updated successfully.")
       end

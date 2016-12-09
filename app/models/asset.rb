@@ -10,8 +10,12 @@ class Asset < ApplicationRecord
   # Indirect associations
 
   # Validations
+  #user_id: presence
+  validates :user_id, :presence => true
   #asset_type
   validates :asset_type, :presence=> true
   #asset_value: only numbers
   validates :asset_value, :numericality => true
+  #net_worth_id: presence
+  validates :net_worth_id, :presence => true
 end

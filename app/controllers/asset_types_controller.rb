@@ -30,7 +30,7 @@ class AssetTypesController < ApplicationController
 
       case referer
       when "/asset_types/new", "/create_asset_type"
-        redirect_to("/asset_types")
+        redirect_to("/assets/new")
       else
         redirect_back(:fallback_location => "/", :notice => "Asset type created successfully.")
       end

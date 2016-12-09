@@ -44,7 +44,7 @@
 
               <% @net_worth.assets.each do |asset| %>
               <li class="list-group-item">
-                <a href="/assets/<%= asset.id %>">
+                <a href="/assets/<%= asset.id %>/edit">
                   <%= asset.asset_type.name %>
                   $<%= asset.asset_value %>
                 </a>
@@ -92,7 +92,6 @@
                   <!-- Label and input for net_worth_id -->
                   <div class="form-group">
 
-                    <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
                     <input type="hidden" id="net_worth_id" name="net_worth_id" placeholder="Net Worth" class="form-control" value="2">
 
                   </div>
@@ -120,7 +119,7 @@
 
                 <% @net_worth.liabilities.each do |liability| %>
                 <li class="list-group-item">
-                  <a href="/liabilities/<%= liability.id %>">
+                  <a href="/liabilities/<%= liability.id %>/edit">
                     <%= liability.liabilities_type.name %>
                     $<%= liability.liabilities_value %>
                   </a>

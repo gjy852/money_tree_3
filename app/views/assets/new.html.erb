@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Asset</h3>
+  <h3>New Asset</h3>
 </div>
 
 <div class="row">
@@ -27,6 +27,8 @@
         <%= select_tag(:asset_type_id, options_from_collection_for_select(AssetType.all, :id, :name, @asset.asset_type_id), :class => "form-control") %>
       </div>
 
+      <a href="/asset_types/new"> <h6> Don't see your asset? Add a new asset type <small></h6> </a>
+
       <!-- Label and input for asset_value -->
       <div class="form-group">
         <label for="asset_value" class="control-label">
@@ -38,21 +40,11 @@
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @asset.user_id %>">
       </div>
 
       <!-- Label and input for net_worth_id -->
       <div class="form-group">
-        <label for="net_worth_id" class="control-label">
-          Net worth
-        </label>
-
-        <%= select_tag(:net_worth_id, options_from_collection_for_select(NetWorth.all, :id, :user_id), :class => "form-control") %>
-      </div>
+        <input type="hidden" id="net_worth_id" name="net_worth_id" placeholder="Net Worth" class="form-control" value="2">
 
       <button class="btn btn-success">
         Create Asset

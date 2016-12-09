@@ -30,7 +30,7 @@ class LiabilityTypesController < ApplicationController
 
       case referer
       when "/liability_types/new", "/create_liability_type"
-        redirect_to("/liability_types")
+        redirect_to("/liabilities/new")
       else
         redirect_back(:fallback_location => "/", :notice => "Liability type created successfully.")
       end

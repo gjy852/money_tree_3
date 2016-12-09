@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Liability</h3>
+  <h3>New Liability</h3>
 </div>
 
 <div class="row">
@@ -27,6 +27,8 @@
         <%= select_tag(:liabilities_type_id, options_from_collection_for_select(LiabilityType.all, :id, :name, @liability.liabilities_type_id), :class => "form-control") %>
       </div>
 
+        <a href="/liability_types/new"> <h6> Don't see your Liability? Add a new Liability type <small></h6> </a>
+
       <!-- Label and input for liabilities_value -->
       <div class="form-group">
         <label for="liabilities_value" class="control-label">
@@ -36,23 +38,14 @@
         <input type="text" id="liabilities_value" name="liabilities_value" placeholder="Liabilities value" class="form-control" value="<%= @liability.liabilities_value %>">
       </div>
 
-      <!-- Label and input for net_worth_id -->
-      <div class="form-group">
-        <label for="net_worth_id" class="control-label">
-          Net worth
-        </label>
-
-        <%= select_tag(:net_worth_id, options_from_collection_for_select(NetWorth.all, :id, :liabilities_id, @liability.net_worth_id), :class => "form-control") %>
-      </div>
-
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @liability.user_id %>">
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
       </div>
+
+      <!-- Label and input for net_worth_id -->
+      <div class="form-group">
+        <input type="hidden" id="net_worth_id" name="net_worth_id" placeholder="Net Worth" class="form-control" value="2">
 
       <button class="btn btn-success">
         Create Liability
